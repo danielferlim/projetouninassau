@@ -1,0 +1,22 @@
+{
+    "name": "vendor/app",
+    "description": "App de Atendimento",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\App\\": "src/",
+            "Classes\\": "../classes/",
+            "Models\\": "../models/",
+            "Views\\": "../views/",
+            "Controllers\\": "../controllers/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel",
+            "email": "danielima3@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    }
+}
