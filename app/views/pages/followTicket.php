@@ -1,39 +1,44 @@
-<?php
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>    
 
+<!-- Estilizando formulário  -->
+<style type="text/css">
+    #form{
+        padding: 10px;
+    }
+    .areatxt{
+        width: 15%;  
+        margin-bottom: 5px;         
+    }   
+</style>
+<!-- Estilizando formulário  -->
+<?php
 if (isset($_GET['token'])) {
     
-    // Recuperando URI 
-    // $url = $_SERVER['REQUEST_URI'];
-    // Dividindo String pelo delimitador '='
-    // $url = explode('=', $url);
-    // Recuperando token
-    // $token=$url[1];
-    $token = $_GET['token'];
+        include ('recuperaToken.php');
 
-    //Recuperando ticket do banco de dados.
-    $sql = \Classes\MySql::conectar()->prepare("SELECT * FROM chamados WHERE token=?");
-    $sql->execute([$token]);    
+ } else if (!isset($_GET['token'])) {
+        ?>
 
+    <body>
+        <div id="form">
+        <form>    
+        <h3>Digite o Número do seu token</h3>
+        <div><input type="text" name="token" class="areatxt"></textarea></div>
+        <div><input type="submit" class="btn btn-primary" class="enviar" name="acao" value="Ver Andamento">
+        <a type="button" class="btn btn-secondary" href="http://localhost/">Voltar</a></div>
+        </form>
+        </div>
+    </body>
 
-    // Verificando se o token existe no banco de dados.
-    if($sql->rowCount() == 1 ){
-        //
-        $result = $sql->fetchAll();
-        // 
-        foreach ($result as $row => $value ) {
-        echo ' Nome: ' . $value['nome'] . '</br>';
-        echo ' Email: ' . $value['email'] . '</br>';            
-        echo ' Pergunta: ' . $value['pergunta'] . '</br>';       
-        echo '<hr>';
-        }   
-    }else{
-        die('Bye!');
-    }
-    
-    // Ver resposta do suporte!
-    
-
-}else{
-    die('Você não inseriu um token!');
-}
-
+    <?php
+        if (isset($_GET['acao'])){       
+            include ('recuperaToken.php');      
+        }
+    } else {
+        die('Volte sempre!');
+    };
