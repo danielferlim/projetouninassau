@@ -88,6 +88,8 @@ if(isset($_POST['acao'])){
         <div class="alert alert-success" role="alert">        
             <h5>Email enviado com sucesso!!! O seu ticket é: <strong> <?php echo $token; ?> </strong></h5>
         </div>
+        <a type="button" class="btn btn-link btn-lg" href="http://localhost">Voltar</a>                
+        
         <!-- mensagem estilizada com bootstrap4 -->
 
         <?php //Abrindo novamente o PHP
