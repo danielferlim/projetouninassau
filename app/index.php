@@ -21,21 +21,25 @@ use PHPMailer\PHPMailer\Exception;
 //Instanciando controlador homeController
 $homeController = new homeController();
 
-
-// Usando method get home
+// Index method get
 Route::add('/', function() use ($homeController){
+    $homeController->index();
+}, 'get');
+
+// Usando method get
+Route::add('/enviar', function() use ($homeController){
     $homeController->formTicket();
 }, 'get');
 
 
-// Usando method post no home
-Route::add('/', function() use ($homeController){
+// Usando method post
+Route::add('/enviar', function() use ($homeController){
     $homeController->creatingTicket();
 }, 'post');
 
 
-// Usando method get chamado
-Route::add('/chamado', function() use ($homeController){
+// Usando method get
+Route::add('/acompanhar', function() use ($homeController){
     $homeController->followTicket();
 }, 'get');
 

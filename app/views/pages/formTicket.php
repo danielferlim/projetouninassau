@@ -1,7 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+</head>
+
 <!-- Estilizando formulário  -->
 <style type="text/css"> 
     #form{
-        width:35%;
+        width:50%;
+        padding-left: 40px;
+        padding-top: 10px;
+        
     }
     .textarea{
         width: 100%;  
@@ -17,7 +29,7 @@
         width: 100%;
     }
     .areatxt{
-        height: 120px;
+        height: 250px;
         width: 100%;
         margin-top: 2px;
         width: 100%;
@@ -28,12 +40,14 @@
     }   
 </style>
 
+<body>
 <!-- Formulário -->
 <div id="form">
 <form method="POST">
     <div><input type="text" class="nome" name="nome" placeholder="Digite seu nome"></div>
     <div><input type="email" class="email" name="email" placeholder="Seu Email"></div>
     <div><textarea name="pergunta" class="areatxt" placeholder="Sua Mensagem"></textarea></div>
-    <div><input type="submit" class="enviar" name="acao" value="Enviar!"></div>
+    <div><input type="submit" class="btn btn-primary float-right" class="enviar" name="acao" value="Enviar!"></div>
 </form>
 </div>
+</body>

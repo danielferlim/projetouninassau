@@ -7,6 +7,10 @@ use Views\mainView;
 // Classe do controller
 class homeController{
 
+    public function index(){
+    mainView::render('index');
+    }
+
     public function formTicket(){    
     mainView::render('formTicket');
     }

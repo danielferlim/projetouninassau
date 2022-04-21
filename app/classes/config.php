@@ -20,7 +20,7 @@ define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}{$barra}");
 // define('DIRIMG' ,DIRPAGE.'img/');
 
 // # ATALHO PARA CHAMADOS
-define('DIRCHAMADO', DIRPAGE.'/chamado');
+define('DIRCHAMADO', DIRPAGE.'/acompanhar');
 
 //Acesso ao db
 define('HOST', "mariadb");

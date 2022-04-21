@@ -1,8 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário Enviado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+</head>
+
 <?php
 if(isset($_POST['acao'])){
 
     // recuperando email do forms
     $email = $_POST['email'];
+    
     // Validando e-mail 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
         $validaEmail = true;        
@@ -11,12 +21,14 @@ if(isset($_POST['acao'])){
         echo '<script>history.go(-1)</script>';
         exit;        
     };  
-    //recuperando nome
+
+    // recuperando nome
     $nome = $_POST['nome'];
+    
     // recuperando pergunta do forms
     $pergunta = $_POST['pergunta']; 
     
-    // func para gerar token simples alfanumerico
+    // function para gerar token simples alfanumerico
     $n=5;
     function getToken($n) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -28,16 +40,14 @@ if(isset($_POST['acao'])){
     }  
     return $randomString;
     }
-
-    //$token= uniqid();
+    
+    // Atribuindo o token a uma variável.
     $token= getToken($n);
 
-    // query usada pra persistir o chamado no mysql
+    // query usada pra persistir o chamado no mariadb
     $sql = \Classes\MySql::conectar()->prepare("INSERT INTO chamados VALUES(null,?,?,?,?)");
-    $sql->execute(array($pergunta,$nome,$email,$token));
-    // JS para mensagem na tela.
-    echo '<script>alert("Seu chamado foi aberto e você receberá um e-mail de acompanhamento")</script>';   
-   
+    $sql->execute(array($pergunta,$nome,$email,$token));      
+    
     //PHPMailer
     $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
     try {
@@ -59,22 +69,33 @@ if(isset($_POST['acao'])){
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Seu chamado foi aberto';
-        //
+        
+        // Criando url para cliente -- DIRCHAMADO existe em config.php nas classes
         $url= DIRCHAMADO.'?token='.$token;
+
+        // Criando variável usada no Body do Email
         $informacoes = 'Seu chamado foi aberto! Acesse pelo link: <br />
         <a href="'.$url.'">Acessar Chamado</a>';
-        //
-        $mail->Body = $informacoes;             
-        $mail->send();
         
-        echo 'Email enviado com sucesso! <br />';
-        echo "O seu ticket é: $token";
+        // Atribuindo variável ao body e enviando e-mail
+        $mail->Body = $informacoes;             
+        $mail->send();  
+        
+        // Fechando PHP para disparar mensagem com estilo do bootstrap
+        ?>
+        
+        <!-- mensagem estilizada com bootstrap4 -->             
+        <div class="alert alert-success" role="alert">        
+            <h5>Email enviado com sucesso!!! O seu ticket é: <strong> <?php echo $token; ?> </strong></h5>
+        </div>
+        <!-- mensagem estilizada com bootstrap4 -->
+
+        <?php //Abrindo novamente o PHP
 
     } catch (Exception $e) {
         echo "Que pena! Não conseguimos enviar o email: {$mail->ErrorInfo}";
-    }
-
-        
+    }        
 }
 ?>
+
 
