@@ -1,6 +1,7 @@
 <?php
 // incluindo arquivos de variáveis
 include ('classes/config.php');
+include ('classes/header.php');
 // Incluindo o autoload do composer
 require_once __DIR__ . '/libs/vendor/autoload.php';
 
