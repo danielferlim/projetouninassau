@@ -22,8 +22,8 @@ if (isset($_GET['token'])) {
         <form>    
         <h3>Digite o Número do seu token</h3>
         <div><input type="text" name="token" class="areatxt"></textarea></div>
-        <div><input type="submit" class="btn btn-primary" class="enviar" name="acao" value="Ver Andamento">
-        <a type="button" class="btn btn-secondary" href="http://localhost/">Voltar</a></div>
+        <div><a type="button" class="btn btn-secondary" href="http://localhost/">Voltar</a>        
+        <input type="submit" class="btn btn-primary" class="enviar" name="acao" value="Ver Andamento"></div>
         </form>
         </div>
     </body>

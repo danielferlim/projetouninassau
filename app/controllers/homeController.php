@@ -35,5 +35,9 @@ class homeController{
         mainView::renderAdmin('adminConsole');
     }
 
+    public function adminRegister(){
+        mainView::renderAdmin('adminRegister');
+    }
+
 
 }

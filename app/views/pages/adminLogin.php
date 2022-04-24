@@ -3,10 +3,21 @@
 //Iniciar sessão
 session_start();
 
+// Verificando se a sessão existe
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
    header("location: adminConsole");
    exit;
 }
+
+// Verificar se existe algum usuário no banco
+if($stmt = \Classes\MySql::conectar()->prepare("SELECT id, username, password FROM users")){        
+        if($stmt->execute()){            
+            if($stmt->rowCount() == 0){
+                header("location: adminRegister");
+                exit;
+            }
+        }
+    }    
 
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
@@ -32,9 +43,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err)){
 
         // Prepare uma declaração selecionada
-        // $sql = "SELECT id, username, password FROM users WHERE username = :username";
-        
-        if($stmt = \Classes\MySql::conectar()->prepare("SELECT id, username, password FROM users WHERE username = :username")){
+        $pdo = \Classes\MySql::conectar();        
+        if($stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = :username")){
 
             // Vincule as variáveis à instrução preparada como parâmetros
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);            
@@ -48,10 +58,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if($row = $stmt->fetch()){
                         $id = $row["id"];
                         $username = $row["username"];
-                        $user_password = $row["password"];
+                        $hashed_password = $row["password"];
                         
-                        // if(password_verify($password, $hashed_password)){
-                        if($password == $user_password){
+                        if(password_verify($password, $hashed_password)){
+                        //if($password == $user_password){
                             // A senha está correta, então inicie uma nova sessão
                             session_start();
                             

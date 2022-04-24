@@ -50,6 +50,11 @@ Route::add('/adminConsole', function () use ($homeController){
     $homeController->adminConsole();
 }, 'get');
 
+// Chamando page do admin Register
+Route::add('/adminRegister', function () use ($homeController){
+    $homeController->adminRegister();
+}, 'get');
+
 // Chamando page de logout
 Route::add('/logout', function() use ($homeController){
     $homeController->adminLogout();
@@ -65,6 +70,11 @@ Route::add('/enviar', function() use ($homeController){
 // Chamando pagina do admin com method post
 Route::add('/admin', function () use ($homeController){
     $homeController->adminLogin();
+}, 'post');
+
+// Chamando page do admin Register
+Route::add('/adminRegister', function () use ($homeController){
+    $homeController->adminRegister();
 }, 'post');
 
 
