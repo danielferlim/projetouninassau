@@ -28,10 +28,7 @@ if (isset($_GET['token'])) {
         </div>
     </body>
 
-    <?php
-        if (isset($_GET['acao'])){       
-            include ('recuperaToken.php');      
-        }
+    <?php        
     } else {
         die('Volte sempre!');
     };
