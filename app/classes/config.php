@@ -24,7 +24,7 @@ define('DIRCHAMADO', DIRPAGE.'/acompanhar');
 
 //Acesso ao db
 define('HOST', "mariadb");
-define('DATABASE', 'alpha_db');
-define('USER', 'alpha');
-define('PASSWORD', 'T14dm00');
+define('DATABASE', 'projetonassau_db');
+define('USER', 'uninassau');
+define('PASSWORD', 'UniP@ass');
 define('SENHAEMAIL', '34kcH901@3!23');
