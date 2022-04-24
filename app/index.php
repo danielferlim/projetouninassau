@@ -1,7 +1,6 @@
 <?php
 // incluindo arquivos de variáveis
 include ('classes/config.php');
-include ('classes/header.php');
 // Incluindo o autoload do composer
 require_once __DIR__ . '/libs/vendor/autoload.php';
 
@@ -27,22 +26,47 @@ Route::add('/', function() use ($homeController){
     $homeController->index();
 }, 'get');
 
-// Usando method get
+Route::add('/home', function() use ($homeController){
+    $homeController->index();
+}, 'get');
+
+// Usando page de formulário
 Route::add('/enviar', function() use ($homeController){
     $homeController->formTicket();
 }, 'get');
 
+// Usando page de acompanhamar do ticket
+Route::add('/acompanhar', function() use ($homeController){
+    $homeController->followTicket();
+}, 'get');
+
+// Chamando page de login admin 
+Route::add('/admin', function () use ($homeController){
+    $homeController->adminLogin();
+}, 'get');
+
+// Chamando page do admin Console
+Route::add('/adminConsole', function () use ($homeController){
+    $homeController->adminConsole();
+}, 'get');
+
+// Chamando page de logout
+Route::add('/logout', function() use ($homeController){
+    $homeController->adminLogout();
+}, 'get');
+
+// Abaixo somente os métodos POST
 
 // Usando method post
 Route::add('/enviar', function() use ($homeController){
     $homeController->creatingTicket();
 }, 'post');
 
+// Chamando pagina do admin com method post
+Route::add('/admin', function () use ($homeController){
+    $homeController->adminLogin();
+}, 'post');
 
-// Usando method get
-Route::add('/acompanhar', function() use ($homeController){
-    $homeController->followTicket();
-}, 'get');
 
 
 // Acionando o router aqui

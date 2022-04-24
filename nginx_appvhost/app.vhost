@@ -10,7 +10,7 @@ server {
        try_files @site @site;
    }
 
-    location ~ \.php$ {
+   location ~ \.php$ {
         return 404;
     }
 

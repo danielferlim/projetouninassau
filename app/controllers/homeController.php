@@ -23,5 +23,17 @@ class homeController{
         mainView::render('followTicket');
     }
 
+    public function adminLogin(){
+        mainView::renderAdmin('adminLogin');
+    }
+
+    public function adminLogout(){
+        mainView::renderAdmin('adminLogout');
+    }
+
+    public function adminConsole(){
+        mainView::renderAdmin('adminConsole');
+    }
+
 
 }
