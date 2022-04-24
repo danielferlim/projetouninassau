@@ -1,10 +1,13 @@
-- criar modelo de criação do banco de dados no docker hub, utilizando as entradas de entrypoint do container
+# Procedimento para se fazer uma instalação limpa.
 
-# Comando para importar modelo da base no banco recém criado!
-# Antes de rodar este comando é necessário apagar a pasta app_data, para subir um ambiente limpo.
-docker exec -i mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < all-databases.sql
+# limpando pasta de dados
+rm -rf app_data/*
 
-
+# limpando todo lixo do docker
 # Recomenda-se usar o comando do Docker para limpar contêineres não utilizados. Contêiner, redes, imagens, e o cache criado podem ser limpos executando o seguinte comando:
 docker system prune -a
+
+# importando modelo de tabelas
+docker exec -i mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < database.sql
+
 
