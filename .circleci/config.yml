@@ -7,14 +7,12 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       #      
-        - slack/notify:
-              event: always      
+        - slack/notify:    
               event: fail
               mentions: '@canal'
               template: basic_fail_1
               #
-        - slack/notify:
-              event: always         
+        - slack/notify:       
               event: pass
               mentions: '@canal'
               template: success_tagged_deploy_1
