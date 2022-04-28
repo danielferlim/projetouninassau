@@ -32,7 +32,7 @@ jobs:
       #           }
       #         ]
       #       }
-          event: always
+          # event: always
 workflows:
   send-notification:
     jobs:
