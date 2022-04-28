@@ -1,3 +1,4 @@
+-- Script de criação básica do banco!
 USE `projetonassau_db`;
 
 CREATE TABLE `chamados` (
