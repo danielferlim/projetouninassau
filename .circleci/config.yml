@@ -6,14 +6,15 @@ jobs:
     docker:
       - image: 'cimg/base:stable'
     steps:
-      - slack/notify:
+      #      
+- slack/notify:
       event: fail
-      template: basic_fail_1  
-      mentions: "@channel"
-      #
-      - slack/notify:
-           event: pass
-           template: success_tagged_deploy_1
+      mentions: '@canal'
+      template: basic_fail_1
+- slack/notify:
+      event: pass
+      mentions: '@canal'
+      template: success_tagged_deploy_1
       # - slack/notify:
       #     custom: |
       #       {
