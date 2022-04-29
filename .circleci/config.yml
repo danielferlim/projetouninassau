@@ -1,10 +1,10 @@
 version: 2.1
 orbs:
   slack: circleci/slack@4.9.3
-jobs:
+jobs:  
   notify:
     docker:
-      - image: 'cimg/base:stable'
+      - image: 'cimg/base:stable'  
     steps:
       #      
         - slack/notify:    
@@ -19,12 +19,13 @@ jobs:
               mentions: '@channel'
               template: basic_success_1
 
+filters:
+  branches:
+    only: /.*(master|MASTER)-\d+.*/ 
+                    
+
 workflows:
   send-notification:
-    filters:
-            branches:
-              only: /.*(master|MASTER)-\d+.*/
     jobs:
       - notify:
           context: slack-secrets
-    
