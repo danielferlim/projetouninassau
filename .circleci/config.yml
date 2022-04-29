@@ -21,9 +21,10 @@ jobs:
 
 workflows:
   send-notification:
-    jobs:
-      - notify:
-          context: slack-secrets
     filters:
             branches:
               only: /.*(master|MASTER)-\d+.*/
+    jobs:
+      - notify:
+          context: slack-secrets
+    
