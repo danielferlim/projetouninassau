@@ -18,11 +18,11 @@ jobs:
               event: pass
               mentions: '@channel'
               template: basic_success_1
-
-# filters:
-#   branches:
-#     only: /.*(master|MASTER)-\d+.*/ 
-                    
+        - slack/notify:      
+              branch_pattern: hotfix-* 
+              event: pass
+              mentions: '@channel'
+              template: basic_success_1            
 
 workflows:
   send-notification:
