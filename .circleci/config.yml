@@ -14,14 +14,14 @@ jobs:
               template: basic_fail_1
               #
         - slack/notify:      
-              #branch_pattern: master 
+              branch_pattern: master 
               event: pass
               mentions: '@channel'
               template: basic_success_1
 
-filters:
-  branches:
-    only: /.*(master|MASTER)-\d+.*/ 
+# filters:
+#   branches:
+#     only: /.*(master|MASTER)-\d+.*/ 
                     
 
 workflows:
