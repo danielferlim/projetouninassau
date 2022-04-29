@@ -24,8 +24,3 @@ workflows:
     jobs:
       - notify:
           context: slack-secrets
-      - deploy:
-            filters:
-              branches:
-                only:
-                  - production
