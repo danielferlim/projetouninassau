@@ -8,7 +8,7 @@ jobs:
     steps:
       #      
         - slack/notify:    
-              #branch_pattern: master
+              branch_pattern: master
               event: fail
               mentions: '@channel'
               template: basic_fail_1
@@ -24,8 +24,6 @@ workflows:
     jobs:
       - notify:
           context: slack-secrets
-      - notify:    
-          filters:
+    filters:
             branches:
-              only:
-                - master
+              only: /.*(master|MASTER)-\d+.*/
