@@ -2,19 +2,34 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.9.3
 
+commands:
+  notify_slack_error:
+    steps:
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
+  notify_slack_job_pass:
+    steps:
+      - slack/notify:
+          event: pass
+          template: basic_success_1
+  
+  notify_slack_deploy_pass:
+    steps:
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1 
+
 jobs:  
   build:
     docker:
-      - image: 'cimg/base:stable'  
-    steps:   
-        - slack/notify:
-              event: fail
-              mentions: '@channel'
-              template: basic_fail_1              
-        - slack/notify:
-              event: pass
-              mentions: '@channel'
-              template: basic_success_1           
+      - image: cimg/openjdk:8.0-node 
+    steps:
+      - notify_slack_error
+      - notify_slack_job_pass
+      - notify_slack_deploy_pass 
+
 
 workflows:
   send-notification:
@@ -24,6 +39,5 @@ workflows:
           filters:
             branches:
               only:
-                - /hotfix(?:-.+)?$/
                 - /master(?:-.+)?$/
           
