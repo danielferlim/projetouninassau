@@ -5,16 +5,12 @@ jobs:
   build:
     docker:
       - image: 'cimg/base:stable'  
-    steps:
-      #      
-        - slack/notify:    
-              #branch_pattern: 'hotfix-*'
+    steps:   
+        - slack/notify:
               event: fail
               mentions: '@channel'
-              template: basic_fail_1
-              #
-        - slack/notify:      
-              #branch_pattern: 'hotfix-*' 
+              template: basic_fail_1              
+        - slack/notify:
               event: pass
               mentions: '@channel'
               template: basic_success_1           
@@ -23,8 +19,9 @@ workflows:
   send-notification:
     jobs:
       - build:
-          filters:
-            branches:
-              only:
-                - /hotfix-*/
           context: slack-secrets
+          filters:
+            tags:
+              only:
+                - /^hotfix.*/
+          
