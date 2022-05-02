@@ -24,16 +24,20 @@ jobs:
           root: .
           paths:
             - .
+      - when:
+          condition:
+            equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - notify_slack_error
+            - notify_slack_job_pass
 
 workflows:
   send-notification:
     jobs:
       - build:
-          context: slack-secrets
-          - notify_slack_error
-          - notify_slack_job_pass
-          filters:
-            branches:
-              only:
-                - /master(?:-.+)?$/
+          context: slack-secrets          
+          # filters:
+          #   branches:
+          #     only:
+          #       - /master(?:-.+)?$/
           
