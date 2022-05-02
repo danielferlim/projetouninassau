@@ -7,24 +7,20 @@ jobs:
       - image: 'cimg/base:stable'  
     steps:
       #      
-        - slack/build:    
+        - slack/notify:    
               #branch_pattern: 'hotfix-*'
               event: fail
               mentions: '@channel'
               template: basic_fail_1
               #
-        - slack/build:      
+        - slack/notify:      
               #branch_pattern: 'hotfix-*' 
               event: pass
               mentions: '@channel'
               template: basic_success_1           
 
-# workflows:
-#   send-notification:
-#     jobs:
-#       - build:
-#           context: slack-secrets
-  send-notification:
+workflows:
+  send-notifications:
     jobs:
       - build:
           filters:
