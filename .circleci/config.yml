@@ -11,8 +11,7 @@ jobs:
               #branch_pattern: 'hotfix-*'
               event: fail
               mentions: '@channel'
-              template: basic_fail_1
-              #
+              template: basic_fail_1              
         - slack/notify:      
               #branch_pattern: 'hotfix-*' 
               event: pass
