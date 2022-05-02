@@ -5,8 +5,7 @@ jobs:
   build:
     docker:
       - image: 'cimg/base:stable'  
-    steps:
-      #      
+    steps:   
         - slack/notify:
               event: fail
               mentions: '@channel'
