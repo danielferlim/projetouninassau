@@ -52,7 +52,7 @@ commands:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text": "*Build pass :* :crazyparrot:",
+                      "text": "Build pass! :crazyparrot:",
                       "emoji": true
                     }
                   ]
