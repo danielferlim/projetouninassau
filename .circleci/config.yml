@@ -14,6 +14,7 @@ commands:
       - slack/notify:
           event: pass
           template: basic_success_1
+          
   
 jobs:  
   build:
