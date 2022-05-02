@@ -30,6 +30,7 @@ jobs:
           steps:
             - notify_slack_error
             - notify_slack_job_pass
+            - run: echo "Executando Job ${CIRCLE_JOB}, na branch ${CIRCLE_BRANCH}"
 
 workflows:
   send-notification:
