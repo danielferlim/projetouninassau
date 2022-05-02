@@ -8,13 +8,13 @@ jobs:
     steps:
       #      
         - slack/notify:    
-              branch_pattern: master
+              branch_pattern: 'hotfix-*'
               event: fail
               mentions: '@channel'
               template: basic_fail_1
               #
         - slack/notify:      
-              branch_pattern: master 
+              branch_pattern: 'hotfix-*' 
               event: pass
               mentions: '@channel'
               template: basic_success_1           
