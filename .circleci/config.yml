@@ -20,7 +20,7 @@ jobs:
               template: basic_success_1           
 
 workflows:
-  send-notifications:
+  send-notification:
     jobs:
       - build:
           filters:
