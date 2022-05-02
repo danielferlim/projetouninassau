@@ -19,17 +19,14 @@ jobs:
   build:
     docker:
       - image: cimg/openjdk:8.0-node 
-    steps:
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
+    steps:      
       - when:
           condition:
             equal: [ master, << pipeline.git.branch >> ]
           steps:
             - notify_slack_error
             - notify_slack_job_pass
+            - run: echo "Resultado para a Job ${CIRCLE_JOB}"
 
 workflows:
   send-notification:
