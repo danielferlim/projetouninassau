@@ -12,3 +12,4 @@ docker exec -i mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < data
 
 
 backlog
+alter
