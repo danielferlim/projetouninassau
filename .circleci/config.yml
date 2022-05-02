@@ -2,25 +2,33 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.9.3
 jobs:  
-  notify:
+  build:
     docker:
       - image: 'cimg/base:stable'  
     steps:
       #      
-        - slack/notify:    
-              branch_pattern: 'hotfix-*'
+        - slack/build:    
+              #branch_pattern: 'hotfix-*'
               event: fail
               mentions: '@channel'
               template: basic_fail_1
               #
-        - slack/notify:      
-              branch_pattern: 'hotfix-*' 
+        - slack/build:      
+              #branch_pattern: 'hotfix-*' 
               event: pass
               mentions: '@channel'
               template: basic_success_1           
 
-workflows:
+# workflows:
+#   send-notification:
+#     jobs:
+#       - build:
+#           context: slack-secrets
   send-notification:
     jobs:
-      - notify:
+      - build:
+          filters:
+            branches:
+              only:
+                - /hotfix-*/
           context: slack-secrets
