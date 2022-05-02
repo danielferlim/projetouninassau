@@ -15,68 +15,23 @@ commands:
           event: pass
           template: basic_success_1
   
-  notify_slack_deploy_pass:
-    steps:
-      - slack/notify:
-          event: pass
-          template: success_tagged_deploy_1 
-  
-  trigger_slack_notification_fail:
-    steps:
-      - slack/notify:
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "*Deploy falhou :* :bosta:",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: fail
-  
-  trigger_slack_notification_pass:
-    steps:
-      - slack/notify:
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "Build pass! :crazyparrot:",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: pass
-
 jobs:  
   build:
     docker:
       - image: cimg/openjdk:8.0-node 
     steps:
-      # - notify_slack_error
-      # - notify_slack_job_pass
-      # - notify_slack_deploy_pass 
-      - trigger_slack_notification_pass
-
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
 
 workflows:
   send-notification:
     jobs:
       - build:
           context: slack-secrets
+          - notify_slack_error
+          - notify_slack_job_pass
           filters:
             branches:
               only:
