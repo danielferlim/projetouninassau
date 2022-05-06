@@ -17,6 +17,14 @@ commands:
 
 jobs:  
   build:
+    parameters:
+      env:
+        description: "Ambiente selecionado para fazer a build"
+        default: "dev"
+        type: string
+      run_migration:
+        default: true
+        type: boolean
     docker:
       - image: cimg/openjdk:8.0-node 
     steps:
@@ -24,19 +32,26 @@ jobs:
           root: .
           paths:
             - .
-      - when:
-          condition:
-            equal: [ master, << pipeline.git.branch >> ]
-          steps:
-            - notify_slack_error
-            - notify_slack_job_pass
+
+  notify:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - notify_slack_error  
+      - notify_slack_job_pass
             
 
 workflows:
   send-notification:
     jobs:
       - build:
-          context: slack-secrets          
+          env: dev-platform    
+    notify:
+      requires: 
+        - build
+      context: slack-secrets
+
+                    
           # filters:
           #   branches:
           #     only:
