@@ -1,3 +1,4 @@
 #ignorando banco de dados
+.gitignore
 app_data/
 app/classes/config.php
