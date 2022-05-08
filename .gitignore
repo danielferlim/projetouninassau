@@ -1,2 +1,3 @@
 #ignorando banco de dados
 app_data/
+app/classes/config.php
