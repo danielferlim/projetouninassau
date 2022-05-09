@@ -36,10 +36,12 @@ services:
     networks:
       - phpmariadb
     environment:      
-      - MYSQL_ROOT_PASSWORD=UniP@ass
-      - MYSQL_PASSWORD=UniP@ass
-      - MYSQL_USER=uninassau
-      - MYSQL_DATABASE=projetonassau_db
+    #senha do root do mysql
+      - MYSQL_ROOT_PASSWORD=senha_do_root
+    #senha/usuario e banco que será criado durante a criação do container  
+      - MYSQL_PASSWORD=senha_user1
+      - MYSQL_USER=nome_user1
+      - MYSQL_DATABASE=nome_do_banco_que_utilizaremos
 
 networks:
   phpmariadb:
