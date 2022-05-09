@@ -1,7 +1,7 @@
 # projetouninassau
 Projeto Docker/Nginx/PHP/Mariadb
 
-# Subindo a infra
+# 1. Subindo a infra
 
 Requisitos:
  
@@ -16,7 +16,7 @@ https://github.com/docker/compose/releases
 DICAS:
 Se for windows, deve ter WSL2 ativado.
 
-# Arquivos de configuração
+# 2. Arquivos de configuração
 
 * Alterar o nome dos seguintes arquivos
 
@@ -32,15 +32,7 @@ Se for windows, deve ter WSL2 ativado.
 * alterar o nome do seguinte arquivo config.php
 
       - app/classes/config_sample.php para app/classes/config.php
-
-# Arquivos de logs do Nginx
-
-     - nginx_logs/Nginx/access.log
-     - nginx_logs/Nginx/error.log 
-     
- 
-
-
+    
 * Definir os valores na parte do e-mail e database do arquivo config.php
 
       - define('HOST', "valor_do_docker_compose_container_name:");
@@ -49,15 +41,23 @@ Se for windows, deve ter WSL2 ativado.
       - define('PASSWORD', 'senha_do_docker_compose_MYSQL_PASSWORD');
       - define('SENHAEMAIL', 'senha_do_email_utilizado_no_phpmailer');
 
-____________________________________________________________
-# Criar as seguintes pastas na raiz do projeto
+# 3. Arquivos de logs do Nginx
+
+* Locais para consultar possiveis erros ou falhas
+
+      - nginx_logs/Nginx/access.log
+      - nginx_logs/Nginx/error.log 
+     
+# 4. Criar as seguintes pastas na raiz do projeto
 
 * Pasta onde ficará o banco de dados e pasta de logs.
 
       - app_data 
       - nginx_logs/Nginx
 
-# Importar o modelo de banco de dados no mariadb com esqueleto do sistema
+# 5. Importar o modelo de banco de dados no mariadb com esqueleto do sistema.
+
+* O Comando deve ser executado com os containers em execução.
 
       - docker exec -i mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < database.sql
 
