@@ -15,13 +15,12 @@ https://github.com/docker/compose/releases
 
 DICAS:
 Se for windows, deve ter WSL2 ativado.
-____________________________________________________________
 
 # Arquivos de configuração
 
 * Alterar o nome dos seguintes arquivos
 
-=> docker-compose_sample.yml para docker-compose.yml
+       - docker-compose_sample.yml para docker-compose.yml
 
 * Definir os valores da seguintes variáveis do docker-compose.yml
 
@@ -32,7 +31,7 @@ ____________________________________________________________
 
 * alterar o nome do seguinte arquivo config.php
 
-=> app/classes/config_sample.php para app/classes/config.php
+      - app/classes/config_sample.php para app/classes/config.php
 
 * Definir os valores na parte do e-mail e database do arquivo config.php
 
@@ -49,5 +48,9 @@ ____________________________________________________________
 
       - app_data 
       - nginx_logs/Nginx
+
+# Importar o modelo de banco de dados no mariadb com esqueleto do sistema
+
+      - docker exec -i mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < database.sql
 
 
