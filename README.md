@@ -33,6 +33,14 @@ Se for windows, deve ter WSL2 ativado.
 
       - app/classes/config_sample.php para app/classes/config.php
 
+# Arquivos de logs do Nginx
+
+     - nginx_logs/Nginx/access.log
+     - nginx_logs/Nginx/error.log 
+     
+ 
+
+
 * Definir os valores na parte do e-mail e database do arquivo config.php
 
       - define('HOST', "valor_do_docker_compose_container_name:");
