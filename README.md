@@ -20,7 +20,8 @@ ____________________________________________________________
 # Arquivos de configuração
 
 * Alterar o nome dos seguintes arquivos
-docker-compose_sample.yml para docker-compose.yml
+
+=> docker-compose_sample.yml para docker-compose.yml
 
 * Definir os valores da seguintes variáveis do docker-compose.yml
 
@@ -31,17 +32,22 @@ docker-compose_sample.yml para docker-compose.yml
 
 * alterar o nome do seguinte arquivo config.php
 
-app/classes/config_sample.php para app/classes/config.php
+=> app/classes/config_sample.php para app/classes/config.php
 
-* Definir os valores na parte do e-mail do arquivo config.php
+* Definir os valores na parte do e-mail e database do arquivo config.php
+
+      - define('HOST', "valor_do_docker_compose_container_name:");
+      - define('DATABASE', 'base_do_docker_compose_MYSQL_DATABASE');
+      - define('USER', 'usuario_do_docker_compose_MYSQL_USER');
+      - define('PASSWORD', 'senha_do_docker_compose_MYSQL_PASSWORD');
+      - define('SENHAEMAIL', 'senha_do_email_utilizado_no_phpmailer');
 
 ____________________________________________________________
 # Criar as seguintes pastas na raiz do projeto
 
-* Pasta onde ficará o banco de dados. 
-app_data
+* Pasta onde ficará o banco de dados e pasta de logs.
 
-* Pasta de logs do Nginx
-nginx_logs/Nginx
+      - app_data 
+      - nginx_logs/Nginx
 
 
