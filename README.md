@@ -38,7 +38,10 @@ app/classes/config_sample.php para app/classes/config.php
 ____________________________________________________________
 # Criar as seguintes pastas na raiz do projeto
 
-app_data/
-nginx_logs/Nginx/
+* Pasta onde ficará o banco de dados. 
+app_data
+
+* Pasta de logs do Nginx
+nginx_logs/Nginx
 
 
