@@ -76,12 +76,12 @@ jobs:
           root: .
           paths:
             - .
-      - when:
-          condition:
-            equal: [ feature/2ft2h85, << pipeline.git.branch >> ]
-          steps:
-            - notify_slack_error
-            - success_tagged_deploy_1
+      # - when:
+      #     condition:
+      #       equal: [ feature/2ft2h85, << pipeline.git.branch >> ]
+      #     steps:
+      - notify_slack_error
+      - success_tagged_deploy_1
             
 
 workflows:
