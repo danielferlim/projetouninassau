@@ -26,7 +26,7 @@ jobs:
             - .
       - when:
           condition:
-            equal: [ feature\/2ft2h85, << pipeline.git.branch >> ]
+            equal: [ feature/2ft2h85, << pipeline.git.branch >> ]
           steps:
             - notify_slack_error
             - notify_slack_job_pass
