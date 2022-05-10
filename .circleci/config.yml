@@ -15,6 +15,58 @@ commands:
           event: pass
           template: basic_success_1
 
+  success_tagged_deploy_1: |
+                        {
+                        	"text": "CircleCI job succeeded!",
+                        	"blocks": [
+                        		{
+                        			"type": "header",
+                        			"text": {
+                        				"type": "plain_text",
+                        				"text": "Deployment Successful! :tada:",
+                        				"emoji": true
+                        			}
+                        		},
+                        		{
+                        			"type": "section",
+                        			"fields": [
+                        				{
+                        					"type": "mrkdwn",
+                        					"text": "*Project*: $CIRCLE_PROJECT_REPONAME"
+                        				},
+                        				{
+                        					"type": "mrkdwn",
+                        					"text": "*When*: $(date +'%m/%d/%Y %T')"
+                        				},
+                        				{
+                        					"type": "mrkdwn",
+                        					"text": "*Job*: $CIRCLE_JOB"
+                        				}
+                        			],
+                        			"accessory": {
+                        				"type": "image",
+                        				"image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                        				"alt_text": "CircleCI logo"
+                        			}
+                        		},
+                        		{
+                        			"type": "actions",
+                        			"elements": [
+                        				{
+                        					"type": "button",
+                        					"text": {
+                        						"type": "plain_text",
+                        						"text": "View Job"
+                        					},
+                        					"url": "${CIRCLE_BUILD_URL}"
+                        				}
+                        			]
+                        		}
+                        	]
+                        }
+                name: Slack - Sending Notification
+                when: always          
+
 jobs:  
   build:
     docker:
@@ -29,7 +81,7 @@ jobs:
             equal: [ feature/2ft2h85, << pipeline.git.branch >> ]
           steps:
             - notify_slack_error
-            - notify_slack_job_pass
+            - success_tagged_deploy_1
             
 
 workflows:
@@ -37,8 +89,8 @@ workflows:
     jobs:
       - build:
           context: slack-secrets          
-          # filters:
-          #   branches:
-          #     only:
-          #       - /master(?:-.+)?$//
+          filters:
+            branches:
+              only:
+                - /^feature.*/
           
