@@ -1,18 +1,15 @@
-<!-- <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>   -->
+<?php include("header.php") ?>
 
 <style type="text/css">
 
 .card{
     padding-left: 15px;
     padding-top: 10px;
+    padding-right: 15px;
 }
 #nome{
     padding-left: 15px;
+    padding-right: 15px;
     padding-top: 10px;
 }
 #pergunta{
@@ -43,48 +40,42 @@
         $result = $sql->fetchAll();
         ?> <!-- -->
 
-        <div class="card" >
-        
-        <?php 
-        foreach ($result as $row => $value ) {
-        ?> 
-             
-              
-        <div class="card-header">
-        <h5>
-
-        <?php
-        echo ' Nome: ' . $value['nome'] . '</br>'; 
-        ?>
-        
-        </h5>
-        </div>
+        <div class="container">
+            <div class="card" >        
+                <?php 
+                    foreach ($result as $row => $value ) {
+                ?>                 
                 
-        <div class="card-body">
-        <p class="card-text" id="pergunta">
-
-        <?php
-        echo ' Pergunta: ' . $value['pergunta'] . '</br>';
-        ?>
-        
-        </p>
-        </div>  
+                <div class="card-header">
+                    <h5>
+                        <?php
+                            echo ' Nome: ' . $value['nome'] . '</br>'; 
+                        ?>            
+                    </h5>
+                </div>
+                    
+            <div class="card-body">
+                <p class="card-text" id="pergunta">
+                    <?php
+                        echo ' Pergunta: ' . $value['pergunta'] . '</br>';
+                    ?>            
+                </p>
+            </div>  
 
         <?php        
         }
         ?>         
         </div>      
-        <?php 
-        
+        <?php        
 
     }else{
         ?>
-        <div class="alert alert-danger" role="alert">
-        O token informado não existe.
-        </div>
+            <div class="alert alert-danger" role="alert">
+                O token informado não existe.
+            </div>
         <?php
     };    
     ?>
-    <a type="button" class="btn btn-link btn-lg" href="http://localhost/acompanhar">Voltar</a>
+        <a type="button" class="btn btn-link btn-lg" href="http://localhost/acompanhar">Voltar</a>
     <?php
 

@@ -1,4 +1,6 @@
 <?php
+include("header.php");
+
 if(isset($_POST['acao'])){
 
     // recuperando email do forms
@@ -36,8 +38,8 @@ if(isset($_POST['acao'])){
     $token= getToken($n);
 
     // query usada pra persistir o chamado no mariadb
-    $sql = \Classes\MySql::conectar()->prepare("INSERT INTO chamados VALUES(null,?,?,?,?)");
-    $sql->execute(array($pergunta,$nome,$email,$token));      
+    $sql = \Classes\MySql::conectar()->prepare("INSERT INTO chamados VALUES(null,?,?,?,?,?,?)");
+    $sql->execute(array($pergunta,$nome,$email,$token,0,null));      
     
     //PHPMailer
     $mail = new \PHPMailer\PHPMailer\PHPMailer(true);

@@ -39,5 +39,9 @@ class homeController{
         mainView::renderAdmin('adminRegister');
     }
 
+    public function adminActions(){
+        mainView::renderAdmin('adminActions');
+    }
+
 
 }

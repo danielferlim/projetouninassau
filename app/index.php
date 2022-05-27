@@ -77,6 +77,10 @@ Route::add('/adminRegister', function () use ($homeController){
     $homeController->adminRegister();
 }, 'post');
 
+// Chamando page do admin Actions a partir do adminActions
+Route::add('/adminConsole', function () use ($homeController){
+    $homeController->adminActions();
+}, 'post');
 
 
 // Acionando o router aqui
