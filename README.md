@@ -84,7 +84,7 @@ Se for windows, deve ter WSL2 ativado.
     "require": {
         "phpmailer/phpmailer": "^6.6"
     }
-}
+    }
 
 
 
