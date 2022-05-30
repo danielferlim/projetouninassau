@@ -52,6 +52,10 @@ if(isset($_POST['historico'])){
                         echo "</br>";
                         echo ' Resposta: ' . $value['resposta_admin'] . '</br>';    
                     ?>        
+                    <form method="post">                           
+                          <input type="submit" class="btn btn-danger" name="deletar_pergunta" value="Deletar Pergunta" /> 
+                          <input type="hidden" name="token" value="<?php echo $value['token'] ?>" />
+                    </form> 
                 </p>
             </div>  
 
@@ -119,6 +123,7 @@ if(isset($_POST['novos_chamados'])){
 
 if(isset($_POST['enviar_resposta'])){
     
+    $status = '1';
     $query = "UPDATE chamados SET resposta_admin = :resposta_admin, 
           resposta = :status 
           WHERE token = :token";

@@ -39,7 +39,7 @@ if(isset($_POST['acao'])){
 
     // query usada pra persistir o chamado no mariadb
     $sql = \Classes\MySql::conectar()->prepare("INSERT INTO chamados VALUES(null,?,?,?,?,?,?)");
-    $sql->execute(array($pergunta,$nome,$email,$token,0,null));      
+    $sql->execute(array($pergunta,$nome,$email,$token,'0',null));      
     
     //PHPMailer
     $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
