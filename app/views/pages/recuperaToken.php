@@ -16,6 +16,10 @@
     padding-left: 15px;
     padding-top: 2px;
 }
+#resposta{
+    padding-left: 15px;
+    padding-top: 2px;
+}
 
 </style>
 
@@ -46,22 +50,29 @@
                     foreach ($result as $row => $value ) {
                 ?>                 
                 
-                <div class="card-header">
-                    <h5>
-                        <?php
-                            echo ' Nome: ' . $value['nome'] . '</br>'; 
-                        ?>            
-                    </h5>
-                </div>
+        <div class="card-header">
+            <h5>
+                <?php
+                    echo ' Nome: ' . $value['nome'] . '</br>'; 
+                ?>            
+            </h5>
+        </div>
                     
-            <div class="card-body">
-                <p class="card-text" id="pergunta">
-                    <?php
-                        echo ' Pergunta: ' . $value['pergunta'] . '</br>';
-                    ?>            
-                </p>
-            </div>  
+        <div class="card-body">
+            <p class="card-text" id="pergunta">
+                <?php
+                    echo ' Pergunta: ' . $value['pergunta'] . '</br>';
+                ?>            
+            </p>
+        </div> 
 
+        <div class="card-body">
+            <p class="card-text" id="resposta">
+                <?php
+                    echo ' Resposta: ' . $value['resposta_admin'] . '</br>';
+                ?>            
+            </p>
+        </div>
         <?php        
         }
         ?>         

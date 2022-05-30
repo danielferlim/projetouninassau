@@ -60,7 +60,12 @@ if(isset($_POST['historico'])){
                 ?>         
             </div>   
         <?php
+    }else{
+        echo '<script>alert("Não há histórico para ser exibido!")</script>';
+        echo '<script>history.go(-1)</script>';
     }
+
+
 }
 
 if(isset($_POST['novos_chamados'])){
@@ -95,7 +100,8 @@ if(isset($_POST['novos_chamados'])){
                     ?> 
                     <form method="post">
                           <textarea class="areatxt" name="resposta" placeholder="Resposta do Admin..."></textarea>      
-                          <input type="submit" class="btn btn-primary" name="enviar_resposta" value="Enviar Resposta" />
+                          <input type="submit" class="btn btn-primary" name="enviar_resposta" value="Enviar Resposta" />                           
+                          <input type="submit" class="btn btn-danger" name="deletar_pergunta" value="Deletar Pergunta" /> 
                           <input type="hidden" name="token" value="<?php echo $value['token'] ?>" />
                     </form>  
             </p>
@@ -105,6 +111,9 @@ if(isset($_POST['novos_chamados'])){
     ?>         
         </div>   
     <?php
+    }else{
+        echo '<script>alert("Não há novos chamados!")</script>';
+        echo '<script>history.go(-1)</script>';
     }
 }
 
@@ -120,6 +129,22 @@ if(isset($_POST['enviar_resposta'])){
     $stmt->bindParam(':status', $status, PDO::PARAM_INT);    
     $stmt->bindParam(':token', $_POST['token'], PDO::PARAM_STR);
     $stmt->execute();
+
+    echo '<script>alert("Resposta Enviada com sucesso!")</script>';
+    echo '<script>history.go(-1)</script>';
+
+}
+
+if(isset($_POST['deletar_pergunta'])){
+
+    $query = "DELETE FROM chamados WHERE token = :token";           
+       
+    $stmt = \Classes\MySql::conectar()->prepare($query);        
+    $stmt->bindParam(':token', $_POST['token'], PDO::PARAM_STR);
+    $stmt->execute();
+
+    echo '<script>alert("Pergunta deletada com sucesso!")</script>';
+    echo '<script>history.go(-1)</script>';
 
 }
 
