@@ -61,7 +61,7 @@ Se for windows, deve ter WSL2 ativado.
 
       - docker exec -i mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < database.sql
 
-# Composer modelo
+# 6. Composer modelo
 
       - {
     "name": "vendor/app",
