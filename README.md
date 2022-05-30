@@ -61,4 +61,30 @@ Se for windows, deve ter WSL2 ativado.
 
       - docker exec -i mariadb sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < database.sql
 
+# Composer modelo
+
+      - {
+    "name": "vendor/app",
+    "description": "App de Atendimento",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\App\\": "src/",
+            "Classes\\": "../classes/",
+            "Models\\": "../models/",
+            "Views\\": "../views/",
+            "Controllers\\": "../controllers/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel",
+            "email": "danielima3@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    }
+}
+
+
 
