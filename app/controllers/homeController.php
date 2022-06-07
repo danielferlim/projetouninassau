@@ -43,5 +43,9 @@ class homeController{
         mainView::renderAdmin('adminActions');
     }
 
+    public function tableauOne(){
+        mainView::renderAdmin('tableauOne');
+    }
+
 
 }

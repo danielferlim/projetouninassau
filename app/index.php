@@ -60,6 +60,12 @@ Route::add('/logout', function() use ($homeController){
     $homeController->adminLogout();
 }, 'get');
 
+
+// Chamando page de logout
+Route::add('/tableau', function() use ($homeController){
+    $homeController->tableauOne();
+}, 'get');
+
 // Abaixo somente os métodos POST
 
 // Usando method post
